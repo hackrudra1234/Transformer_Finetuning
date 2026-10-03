@@ -1,6 +1,8 @@
 from datasets import load_dataset
 
 from .config import DATASET_NAME, DATASET_SUBSET
+from src.data import load_sentiment_dataset
+from src.config import LABEL_NAMES
 
 
 def load_sentiment_dataset():
@@ -13,8 +15,7 @@ def load_sentiment_dataset():
     return dataset
 
 
-from distilbert_sentiment.data import load_sentiment_dataset
-from distilbert_sentiment.config import LABEL_NAMES
+
 
 dataset = load_sentiment_dataset()
 
