@@ -5,6 +5,13 @@ from src.config import LABEL_NAMES
 from src.config import MAX_LENGTH
 
 
+from src.config import (
+    DATASET_NAME,
+    DATASET_SUBSET,
+    DATA_SAVE_PATH,
+)
+
+
 def load_sentiment_dataset():
     dataset = load_dataset(
         DATASET_NAME,
@@ -12,9 +19,9 @@ def load_sentiment_dataset():
         data_dir=DATASET_SUBSET,
     )
 
+    dataset.save_to_disk(DATA_SAVE_PATH)
+
     return dataset
-
-
 
 
 dataset = load_sentiment_dataset()

@@ -12,3 +12,9 @@ SEED = 42
 
 LABEL_NAMES = ["negative", "neutral", "positive"]
 NUM_LABELS = len(LABEL_NAMES)
+
+DATA_SAVE_PATH = "./data/sentiment_dataset"
+
+CHECKPOINT_DIR = "./models/checkpoints"
+
+MODEL_SAVE_PATH = "./models/distilbert-sentiment"

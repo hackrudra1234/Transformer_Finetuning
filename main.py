@@ -13,6 +13,7 @@ from src.config import (
 )
 from src.data import load_sentiment_dataset, tokenize_dataset
 from src.model import load_tokenizer, load_model
+from src.config import MODEL_SAVE_PATH
 from src.train import (
     build_trainer,
     train_model,
@@ -128,7 +129,7 @@ def main():
     save_model(
         trainer,
         tokenizer,
-        "./distill-sentiment-model"
+        MODEL_SAVE_PATH,
     )
 
     # 10. Test one prediction

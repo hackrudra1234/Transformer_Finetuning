@@ -1,4 +1,5 @@
 from transformers import TrainingArguments, Trainer
+from src.config import CHECKPOINT_DIR
 
 from src.config import (
     LEARNING_RATE,
@@ -30,7 +31,7 @@ def get_training_args():
     optimizer_name = get_optimizer_name()
 
     training_args = TrainingArguments(
-        output_dir="outputs",
+        output_dir=CHECKPOINT_DIR,
 
         learning_rate=LEARNING_RATE,
         per_device_train_batch_size=BATCH_SIZE,
