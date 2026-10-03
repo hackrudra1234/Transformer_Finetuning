@@ -2,6 +2,7 @@ from datasets import load_dataset
 
 from src.config import DATASET_NAME, DATASET_SUBSET
 from src.config import LABEL_NAMES
+from src.config import MAX_LENGTH
 
 
 def load_sentiment_dataset():
@@ -38,3 +39,33 @@ for i, count in enumerate(class_dist):
         f"{count:4d} samples "
         f"({100 * count / len(train_df):.1f}%)"
     )
+
+
+from src.config import MAX_LENGTH
+
+
+def tokenize_function(examples, tokenizer):
+    return tokenizer(
+        examples["text"],
+        padding="max_length",
+        truncation=True,
+        max_length=MAX_LENGTH
+    )
+
+def tokenize_dataset(dataset, tokenizer):
+    tokenized_dataset = dataset.map(
+        lambda examples: tokenize_function(examples, tokenizer),
+        batched=True,
+        desc="Tokenizing"
+    )
+
+    tokenized_dataset = tokenized_dataset.remove_columns(["text"])
+
+    tokenized_dataset = tokenized_dataset.rename_column(
+        "label",
+        "labels"
+    )
+
+    tokenized_dataset.set_format("torch")
+
+    return tokenized_dataset
