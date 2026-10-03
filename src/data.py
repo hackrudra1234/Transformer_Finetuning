@@ -1,7 +1,6 @@
 from datasets import load_dataset
 
-from .config import DATASET_NAME, DATASET_SUBSET
-from src.data import load_sentiment_dataset
+from src.config import DATASET_NAME, DATASET_SUBSET
 from src.config import LABEL_NAMES
 
 
